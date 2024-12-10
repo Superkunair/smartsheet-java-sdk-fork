@@ -38,7 +38,10 @@ public class Workspace extends Folder {
 
     /**
      * Represents if the workspace is marked as favorite
+     *
+     * @deprecated As of API 3.2.2. Please use the isFavorite method in FavoritesResources instead.
      */
+    @Deprecated(since = "3.2.2", forRemoval = true)
     private Boolean favorite;
 
     /**
@@ -83,7 +86,10 @@ public class Workspace extends Folder {
      * Gets the favorite
      *
      * @return the favorite
+     *
+     * @deprecated As of API 3.2.2. Please use the isFavorite method in FavoritesResources instead.
      */
+    @Deprecated(since = "3.2.2", forRemoval = true)
     public Boolean getFavorite() {
         return favorite;
     }
@@ -92,7 +98,10 @@ public class Workspace extends Folder {
      * Sets the favorite
      *
      * @param favorite the favorite
+     *
+     * @deprecated As of API 3.2.2. Please use the isFavorite method in FavoritesResources instead.
      */
+    @Deprecated(since = "3.2.2", forRemoval = true)
     public Folder setFavorite(Boolean favorite) {
         this.favorite = favorite;
         return null;

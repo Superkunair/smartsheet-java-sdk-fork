@@ -64,6 +64,14 @@ class FavoriteResourcesImplTest extends ResourcesImplBase {
     }
 
     @Test
+    void testIsFavorite() throws Exception {
+        server.setResponseBody(new File("src/test/resources/isFavorite.json"));
+        Favorite isFavorite = favoriteResources.isFavorite(FavoriteType.SHEET, 5897312590423940L);
+        assertThat(isFavorite.getObjectId()).isEqualTo(5897312590423940L);
+        assertThat(isFavorite.getType()).isEqualTo(FavoriteType.SHEET);
+    }
+
+    @Test
     void testRemoveFavorites() throws Exception {
         server.setResponseBody(new File("src/test/resources/removeFavorites.json"));
         Set<Long> folderIds = new HashSet<>();

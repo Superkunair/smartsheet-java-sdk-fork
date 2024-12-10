@@ -65,6 +65,21 @@ public class FavoriteResourcesIT extends ITResourcesImpl {
     }
 
     @Test
+    void testIsFavorite() throws SmartsheetException, IOException {
+        Sheet sheet = smartsheet.sheetResources().createSheet(createSheetObject());
+        List<Favorite> favoriteToAdd = new Favorite.AddFavoriteBuilder()
+                .addFavorite(sheet.getId(), FavoriteType.SHEET)
+                .build();
+        smartsheet.favoriteResources().addFavorites(favoriteToAdd);
+        Favorite isFavorite = smartsheet.favoriteResources().isFavorite(FavoriteType.SHEET, sheet.getId());
+        assertThat(isFavorite).isNotNull();
+        assertThat(isFavorite).isInstanceOf(Favorite.class);
+        assertThat(isFavorite.getType()).isEqualTo(FavoriteType.SHEET);
+        assertThat(isFavorite.getObjectId()).isEqualTo(sheet.getId());
+        deleteSheet(sheet.getId());
+    }
+
+    @Test
     void testRemoveFavorites() throws Exception {
 
         Folder folder1 = createFolder();
